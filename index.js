@@ -13,7 +13,7 @@ function loadFetch(inputValue) {
       document.querySelector("#song-details").innerHTML = "";
       for (let i = 0; i < arrData.length; i++) {
         const element = arrData[i];
-        const title = element.album.title;
+        const title = element.title;
         const name = element.artist.name;
         const parent = document.querySelector("#song-details");
         const para = document.createElement("p");
@@ -23,7 +23,7 @@ function loadFetch(inputValue) {
                                     <p class="author lead">Album by <span>${name}</span></p>
                                 </div>
                                 <div class="col-md-3 text-md-right text-center">
-                                        <button class="btn btn-success">Get Lyrics</button>
+                                        <button onclick="getLyric()" class="btn btn-success">Get Lyrics</button>
                                 </div>
                             </div>`;
         parent.appendChild(para);
@@ -31,5 +31,13 @@ function loadFetch(inputValue) {
     })
     .catch((err) => {
       console.log(err);
+    });
+}
+
+function getLyric() {
+  fetch(`https://api.lyrics.ovh/v1/artist/title`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
     });
 }
