@@ -14,16 +14,16 @@ function loadFetch(inputValue) {
       for (let i = 0; i < arrData.length; i++) {
         const element = arrData[i];
         let title = element.title;
-        let name = element.artist.name;
+        let artistName = element.artist.name;
         const parent = document.querySelector("#song-details");
         const para = document.createElement("p");
         para.innerHTML = `<div class="single-result row align-items-center my-3 p-3">
                                       <div class="col-md-9">
                                           <h3 class="lyrics-name">${title}</h3>
-                                          <p class="author lead">Album by <span>${name}</span></p>
+                                          <p class="author lead">Album by <span>${artistName}</span></p>
                                       </div>
                                       <div class="col-md-3 text-md-right text-center">
-                                              <button onclick="getLyric('${name}','${title}')" class="btn btn-success">Get Lyrics</button>
+                                              <button onclick="getLyric('${artistName}','${title}')" class="btn btn-success">Get Lyrics</button>
 
                                               </div>
                                   </div>`;
